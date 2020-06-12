@@ -44,13 +44,13 @@ class AppTest {
         ActivityScenario.launch(MainActivity::class.java)
 
         // Check Buttons fragment screen is displayed
-        onView(withId(R.id.textView)).check(matches(isDisplayed()))
+        onView(withId(R.id.tvTitle)).check(matches(isDisplayed()))
 
         // Tap on Button 1
-        onView(withId(R.id.button1)).perform(click())
+        onView(withId(R.id.btMemory1)).perform(click())
 
         // Navigate to Logs screen
-        onView(withId(R.id.all_logs)).perform(click())
+        onView(withId(R.id.btAllLogsInMem)).perform(click())
 
         // Check Logs fragment screen is displayed
         onView(withText(containsString("Interaction with 'Button 1'")))

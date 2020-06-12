@@ -18,7 +18,6 @@ package com.example.android.hilt.ui
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.example.android.hilt.R
 import com.example.android.hilt.data.LoggerDataSource
@@ -26,6 +25,7 @@ import com.example.android.hilt.di.qualifier.InMemoryLogger
 import com.example.android.hilt.navigator.AppNavigator
 import com.example.android.hilt.navigator.Screens
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_buttons.*
 import javax.inject.Inject
 
 /**
@@ -47,24 +47,10 @@ class ButtonsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        view.findViewById<Button>(R.id.button1).setOnClickListener {
-            logger.addLog("Tapped on 'Button 1'")
-        }
-
-        view.findViewById<Button>(R.id.button2).setOnClickListener {
-            logger.addLog("Tapped on 'Button 2'")
-        }
-
-        view.findViewById<Button>(R.id.button3).setOnClickListener {
-            logger.addLog("Tapped on 'Button 3'")
-        }
-
-        view.findViewById<Button>(R.id.all_logs).setOnClickListener {
-            navigator.navigateTo(Screens.ALL_LOGS)
-        }
-
-        view.findViewById<Button>(R.id.delete_logs).setOnClickListener {
-            logger.removeLogs()
-        }
+        btMemory1.setOnClickListener { logger.addLog("Tapped on 'Button 1'") }
+        btMemory2.setOnClickListener { logger.addLog("Tapped on 'Button 2'")}
+        btMemory3.setOnClickListener { logger.addLog("Tapped on 'Button 3'") }
+        btAllLogsInMem.setOnClickListener { navigator.navigateTo(Screens.ALL_IN_MEM_LOGS) }
+        btDeleteAllLogsInMem.setOnClickListener { logger.removeLogs() }
     }
 }

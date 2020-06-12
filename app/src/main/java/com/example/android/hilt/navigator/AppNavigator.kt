@@ -21,7 +21,7 @@ package com.example.android.hilt.navigator
  */
 enum class Screens {
     HOME,
-    ALL_LOGS
+    ALL_IN_MEM_LOGS
 }
 
 /**

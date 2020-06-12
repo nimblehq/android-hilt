@@ -31,7 +31,7 @@ class AppNavigatorImpl @Inject constructor(private val activity: FragmentActivit
     override fun navigateTo(screen: Screens) {
         when (screen) {
             Screens.HOME -> ButtonsFragment()
-            Screens.ALL_LOGS -> LogsFragment()
+            Screens.ALL_IN_MEM_LOGS -> LogsFragment()
         }
         activity.findNavController(R.id.main_container).navigate(R.id.action_buttonsFragment_to_logsFragment)
     }

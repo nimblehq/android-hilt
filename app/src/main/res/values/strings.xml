@@ -19,8 +19,12 @@
     <string name="button_1">Button 1</string>
     <string name="button_2">Button 2</string>
     <string name="button_3">Button 3</string>
-    <string name="see_all_logs">SEE ALL LOGS</string>
-    <string name="delete_logs">Delete Logs</string>
+    <string name="see_all_logs_in_memory">SEE ALL LOGS IN MEM</string>
+    <string name="see_all_logs_in_db">SEE ALL LOGS IN DB</string>
+    <string name="delete_in_mem_logs">Delete In Memory Logs</string>
+    <string name="delete_in_db_logs">Delete In Db Logs</string>
 
     <string name="content_authority">com.example.android.hilt.provider</string>
+    <string name="in_memory">In Memory</string>
+    <string name="in_local_database">In Local Database</string>
 </resources>
