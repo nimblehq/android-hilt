@@ -17,14 +17,12 @@
 package com.example.android.hilt.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.example.android.hilt.R
 import com.example.android.hilt.data.LoggerDataSource
-import com.example.android.hilt.di.InMemoryLogger
+import com.example.android.hilt.di.qualifier.InMemoryLogger
 import com.example.android.hilt.navigator.AppNavigator
 import com.example.android.hilt.navigator.Screens
 import dagger.hilt.android.AndroidEntryPoint
@@ -50,19 +48,19 @@ class ButtonsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         view.findViewById<Button>(R.id.button1).setOnClickListener {
-            logger.addLog("Interaction with 'Button 1'")
+            logger.addLog("Tapped on 'Button 1'")
         }
 
         view.findViewById<Button>(R.id.button2).setOnClickListener {
-            logger.addLog("Interaction with 'Button 2'")
+            logger.addLog("Tapped on 'Button 2'")
         }
 
         view.findViewById<Button>(R.id.button3).setOnClickListener {
-            logger.addLog("Interaction with 'Button 3'")
+            logger.addLog("Tapped on 'Button 3'")
         }
 
         view.findViewById<Button>(R.id.all_logs).setOnClickListener {
-            navigator.navigateTo(Screens.LOGS)
+            navigator.navigateTo(Screens.ALL_LOGS)
         }
 
         view.findViewById<Button>(R.id.delete_logs).setOnClickListener {

@@ -20,8 +20,8 @@ package com.example.android.hilt.navigator
  * Available screens.
  */
 enum class Screens {
-    BUTTONS,
-    LOGS
+    HOME,
+    ALL_LOGS
 }
 
 /**
