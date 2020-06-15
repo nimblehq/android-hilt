@@ -1,9 +1,9 @@
 # Using Hilt in your Android app
 
-- This folder originally contains the source code for the "Using Hilt in your Android app" codelab.
+- This folder originally contains the source code for the "Using Hilt in your Android app" Google codelab.
 It was extended to have more integration with the other Architecture components like ViewModel, Navigation Components...
 to showcase more ideas on using Hilt in an Android application.
-
+- Extended implementations are craft by [Nimble](https://www.nimblehq.co) with love ❤️
 
 # Introduction
 Dependency injection is a technique widely used in programming and well suited
