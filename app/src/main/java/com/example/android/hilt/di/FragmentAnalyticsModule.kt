@@ -10,6 +10,7 @@ import dagger.hilt.android.components.FragmentComponent
 /**
  * This module will demo how FragmentScope affects the lifecycle of the created components.
  * Learn about providing @Bind an interface info to Hilt from here.
+ * Check the logcat and filter 'AnalyticsHilt' to see instance creations/destroy time.
  */
 @InstallIn(FragmentComponent::class)
 @Module
