@@ -95,7 +95,7 @@ class LogsFragment : Fragment() {
     }
 
     private fun analyticsTrack() {
-        //Notice the AnalyticsServiceImpl instances, they are created/destroyed per fragment lifecycle
+        // Notice the AnalyticsServiceImpl instances, they are created/destroyed per fragment lifecycle
         analyticsService.track(this::class.simpleName.toString())
     }
 }
