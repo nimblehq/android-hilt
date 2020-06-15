@@ -14,15 +14,28 @@
  * limitations under the License.
  */
 
-package com.example.android.hilt.data
+package com.example.android.hilt.datasource.logs
 
-import androidx.room.Database
-import androidx.room.RoomDatabase
+import com.example.android.hilt.datasource.model.Log
+import java.util.*
+import javax.inject.Inject
 
-/**
- * SQLite Database for storing the logs.
- */
-@Database(entities = arrayOf(Log::class), version = 1, exportSchema = false)
-abstract class AppDatabase : RoomDatabase() {
-    abstract fun logDao(): LogDao
+class LoggerInMemoryDataSource @Inject constructor() :
+    LoggerDataSource {
+
+    private val logs = LinkedList<Log>()
+
+    override fun addLog(msg: String) {
+        logs.addFirst(
+            Log(msg, System.currentTimeMillis())
+        )
+    }
+
+    override fun getAllLogs(callback: (List<Log>) -> Unit) {
+        callback(logs)
+    }
+
+    override fun removeLogs() {
+        logs.clear()
+    }
 }

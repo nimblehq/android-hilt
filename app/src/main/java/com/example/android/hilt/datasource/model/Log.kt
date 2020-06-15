@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.hilt.data
+package com.example.android.hilt.datasource.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

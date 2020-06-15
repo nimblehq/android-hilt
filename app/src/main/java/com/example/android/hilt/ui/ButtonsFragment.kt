@@ -21,7 +21,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import com.example.android.hilt.R
 import com.example.android.hilt.analytics.AnalyticsService
-import com.example.android.hilt.data.LoggerDataSource
+import com.example.android.hilt.datasource.logs.LoggerDataSource
 import com.example.android.hilt.di.qualifier.DatabaseLogger
 import com.example.android.hilt.di.qualifier.InMemoryLogger
 import com.example.android.hilt.navigator.AppNavigator

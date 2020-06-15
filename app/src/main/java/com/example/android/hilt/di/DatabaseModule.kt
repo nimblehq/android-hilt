@@ -18,8 +18,8 @@ package com.example.android.hilt.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.android.hilt.data.AppDatabase
-import com.example.android.hilt.data.LogDao
+import com.example.android.hilt.datasource.AppDatabase
+import com.example.android.hilt.datasource.logs.LogDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
