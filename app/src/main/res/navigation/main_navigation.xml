@@ -18,6 +18,12 @@
         android:id="@+id/logsFragment"
         android:name="com.example.android.hilt.ui.LogsFragment"
         android:label="fragment_logs"
-        tools:layout="@layout/fragment_logs" />
+        tools:layout="@layout/fragment_logs">
+
+        <argument
+            android:name="logType"
+            app:argType="com.example.android.hilt.navigator.LogsScreen"
+            app:nullable="false" />
+    </fragment>
 
 </navigation>

@@ -21,9 +21,10 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import com.example.android.hilt.R
 import com.example.android.hilt.data.LoggerDataSource
+import com.example.android.hilt.di.qualifier.DatabaseLogger
 import com.example.android.hilt.di.qualifier.InMemoryLogger
 import com.example.android.hilt.navigator.AppNavigator
-import com.example.android.hilt.navigator.Screens
+import com.example.android.hilt.navigator.LogsScreen
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_buttons.*
 import javax.inject.Inject
@@ -35,7 +36,11 @@ import javax.inject.Inject
 class ButtonsFragment : Fragment() {
 
     @InMemoryLogger
-    @Inject lateinit var logger: LoggerDataSource
+    @Inject lateinit var inMemoryLogger: LoggerDataSource
+
+    @DatabaseLogger
+    @Inject lateinit var databaseLogger: LoggerDataSource
+
     @Inject lateinit var navigator: AppNavigator
 
     override fun onCreateView(
@@ -47,10 +52,16 @@ class ButtonsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        btMemory1.setOnClickListener { logger.addLog("Tapped on 'Button 1'") }
-        btMemory2.setOnClickListener { logger.addLog("Tapped on 'Button 2'")}
-        btMemory3.setOnClickListener { logger.addLog("Tapped on 'Button 3'") }
-        btAllLogsInMem.setOnClickListener { navigator.navigateTo(Screens.ALL_IN_MEM_LOGS) }
-        btDeleteAllLogsInMem.setOnClickListener { logger.removeLogs() }
+        btMemory1.setOnClickListener { inMemoryLogger.addLog("Tapped on 'Button 1'") }
+        btMemory2.setOnClickListener { inMemoryLogger.addLog("Tapped on 'Button 2'")}
+        btMemory3.setOnClickListener { inMemoryLogger.addLog("Tapped on 'Button 3'") }
+        btAllLogsInMem.setOnClickListener { navigator.navigateToAllLogs(LogsScreen.ALL_IN_MEM_LOGS) }
+        btClearMemLogs.setOnClickListener { inMemoryLogger.removeLogs() }
+
+        btDb1.setOnClickListener { databaseLogger.addLog("Tapped on 'Button 1'") }
+        btDb2.setOnClickListener { databaseLogger.addLog("Tapped on 'Button 2'")}
+        btDb3.setOnClickListener { databaseLogger.addLog("Tapped on 'Button 3'") }
+        btAllLogsInDb.setOnClickListener { navigator.navigateToAllLogs(LogsScreen.ALL_IN_DB_LOGS) }
+        btClearDbLogs.setOnClickListener { databaseLogger.removeLogs() }
     }
 }

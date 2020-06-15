@@ -17,17 +17,17 @@
 package com.example.android.hilt.navigator
 
 /**
- * Available screens.
+ * Available Logs screens.
  */
-enum class Screens {
-    HOME,
-    ALL_IN_MEM_LOGS
+enum class LogsScreen {
+    ALL_IN_MEM_LOGS,
+    ALL_IN_DB_LOGS
 }
 
 /**
  * Interfaces that defines an app navigator.
  */
 interface AppNavigator {
-    // Navigate to a given screen.
-    fun navigateTo(screen: Screens)
+
+    fun navigateToAllLogs(screen: LogsScreen)
 }

@@ -41,23 +41,12 @@
         android:id="@+id/tvTitleInMemory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:text="@string/in_memory"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="10dp"/>
-
-    <TextView
-        android:id="@+id/tvTitleInLocalDb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/in_memory"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:text="@string/in_local_database"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="10dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
     <Button
         android:id="@+id/btMemory1"
@@ -93,21 +82,83 @@
         android:id="@+id/btAllLogsInMem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/see_all_logs_in_memory"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
+        android:text="@string/see_logs_in_memory"
         app:layout_constraintEnd_toEndOf="@id/tvTitleInMemory"
         app:layout_constraintStart_toStartOf="@id/tvTitleInMemory"
         app:layout_constraintTop_toBottomOf="@+id/btMemory3" />
 
-    <Button
-        android:id="@+id/btDeleteAllLogsInMem"
-        style="@style/Widget.AppCompat.Button.Colored"
+    <TextView
+        android:id="@+id/tvTitleInDb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/delete_in_mem_logs"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/in_database"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <Button
+        android:id="@+id/btDb1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/button_1"
+        app:layout_constraintEnd_toEndOf="@id/tvTitleInDb"
+        app:layout_constraintStart_toStartOf="@id/tvTitleInDb"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <Button
+        android:id="@+id/btDb2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/button_2"
+        app:layout_constraintEnd_toEndOf="@id/tvTitleInDb"
+        app:layout_constraintStart_toStartOf="@id/tvTitleInDb"
+        app:layout_constraintTop_toBottomOf="@+id/btDb1" />
+
+    <Button
+        android:id="@+id/btDb3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/button_3"
+        app:layout_constraintEnd_toEndOf="@id/tvTitleInDb"
+        app:layout_constraintStart_toStartOf="@id/tvTitleInDb"
+        app:layout_constraintTop_toBottomOf="@+id/btDb2" />
+
+    <Button
+        android:id="@+id/btAllLogsInDb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/see_logs_in_db"
+        app:layout_constraintEnd_toEndOf="@id/tvTitleInDb"
+        app:layout_constraintStart_toStartOf="@id/tvTitleInDb"
+        app:layout_constraintTop_toBottomOf="@+id/btDb3" />
+
+    <Button
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:id="@+id/btClearMemLogs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/clear_in_mem_logs"
         app:layout_constraintStart_toStartOf="@id/btAllLogsInMem"
         app:layout_constraintTop_toBottomOf="@+id/btAllLogsInMem" />
+
+    <Button
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:id="@+id/btClearDbLogs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/clear_in_db_logs"
+        app:layout_constraintStart_toStartOf="@id/btAllLogsInDb"
+        app:layout_constraintTop_toBottomOf="@+id/btAllLogsInDb" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,14 +23,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.hilt.R
 import com.example.android.hilt.data.Log
 import com.example.android.hilt.data.LoggerDataSource
 import com.example.android.hilt.di.qualifier.DatabaseLogger
 import com.example.android.hilt.di.qualifier.InMemoryLogger
+import com.example.android.hilt.navigator.LogsScreen
 import com.example.android.hilt.util.DateFormatter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_logs.*
 import javax.inject.Inject
 
 /**
@@ -41,9 +44,13 @@ class LogsFragment : Fragment() {
 
     @InMemoryLogger
     @Inject lateinit var logger: LoggerDataSource
+
+    @DatabaseLogger
+    @Inject lateinit var dbLogger: LoggerDataSource
+
     @Inject lateinit var dateFormatter: DateFormatter
 
-    private lateinit var recyclerView: RecyclerView
+    val args: LogsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,16 +61,17 @@ class LogsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view).apply {
-            setHasFixedSize(true)
+        rvLogs.setHasFixedSize(true)
+
+        when (args.logType) {
+            LogsScreen.ALL_IN_MEM_LOGS -> getLogFrom(logger)
+            LogsScreen.ALL_IN_DB_LOGS -> getLogFrom(dbLogger)
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-
+    private fun getLogFrom(logger: LoggerDataSource) {
         logger.getAllLogs { logs ->
-            recyclerView.adapter =
+            rvLogs.adapter =
                 LogsViewAdapter(
                     logs,
                     dateFormatter
