@@ -37,7 +37,7 @@ import kotlinx.android.synthetic.main.fragment_logs.*
 import javax.inject.Inject
 
 /**
- * Fragment that displays the database logs.
+ * Fragment that displays the logs from either in-memory or database source.
  */
 @AndroidEntryPoint
 class LogsFragment : Fragment() {
@@ -50,7 +50,7 @@ class LogsFragment : Fragment() {
 
     @Inject lateinit var dateFormatter: DateFormatter
 
-    val args: LogsFragmentArgs by navArgs()
+    private val args: LogsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,

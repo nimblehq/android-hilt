@@ -1,10 +1,8 @@
 # Using Hilt in your Android app
 
-This folder contains the source code for the "Using Hilt in your Android app" codelab.
-
-The codelab is built in multiple GitHub branches:
-* `master` is the codelab's starting point.
-* `solution` contains the solution to this codelab.
+- This folder originally contains the source code for the "Using Hilt in your Android app" codelab.
+It was extended to have more integration with the other Architecture components like ViewModel, Navigation Components...
+to showcase more ideas on using Hilt in an Android application.
 
 
 # Introduction
@@ -30,7 +28,7 @@ Implementing dependency injection provides you with the following advantages:
 
 
 # Comparison between different branches
-* [Full codelab comparison](https://github.com/googlecodelabs/android-hilt/compare/master...solution)
+* [Full codelab comparison vs this version](https://github.com/googlecodelabs/android-hilt/compare/master...sleepylee:develop)
 
 
 # License
