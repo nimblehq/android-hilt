@@ -25,12 +25,12 @@ import javax.inject.Inject
 /**
  * Data manager class that handles data manipulation between the database and the UI.
  */
-class LoggerLocalDataSource @Inject constructor(private val logDao: LogDao) : LoggerDataSource {
-
-    private val executorService: ExecutorService = Executors.newFixedThreadPool(4)
-    private val mainThreadHandler by lazy {
-        Handler(Looper.getMainLooper())
-    }
+class LoggerLocalDataSource
+@Inject constructor(
+    private val logDao: LogDao,
+    private val mainThreadHandler: Handler,
+    private val executorService: ExecutorService
+) : LoggerDataSource {
 
     override fun addLog(msg: String) {
         executorService.execute {

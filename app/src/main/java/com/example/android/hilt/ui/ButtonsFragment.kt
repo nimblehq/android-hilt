@@ -20,6 +20,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import com.example.android.hilt.R
+import com.example.android.hilt.analytics.AnalyticsService
 import com.example.android.hilt.data.LoggerDataSource
 import com.example.android.hilt.di.qualifier.DatabaseLogger
 import com.example.android.hilt.di.qualifier.InMemoryLogger
@@ -43,6 +44,8 @@ class ButtonsFragment : Fragment() {
 
     @Inject lateinit var navigator: AppNavigator
 
+    @Inject lateinit var analyticsService: AnalyticsService
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -63,5 +66,11 @@ class ButtonsFragment : Fragment() {
         btDb3.setOnClickListener { databaseLogger.addLog("Tapped on 'Button 3'") }
         btAllLogsInDb.setOnClickListener { navigator.navigateToAllLogs(LogsScreen.ALL_IN_DB_LOGS) }
         btClearDbLogs.setOnClickListener { databaseLogger.removeLogs() }
+
+        analyticsTrack()
+    }
+
+    private fun analyticsTrack() {
+        analyticsService.track(this::class.simpleName.toString())
     }
 }

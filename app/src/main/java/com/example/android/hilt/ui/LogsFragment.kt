@@ -26,6 +26,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.hilt.R
+import com.example.android.hilt.analytics.AnalyticsService
 import com.example.android.hilt.data.Log
 import com.example.android.hilt.data.LoggerDataSource
 import com.example.android.hilt.di.qualifier.DatabaseLogger
@@ -50,6 +51,8 @@ class LogsFragment : Fragment() {
 
     @Inject lateinit var dateFormatter: DateFormatter
 
+    @Inject lateinit var analyticsService: AnalyticsService
+
     private val args: LogsFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -67,6 +70,8 @@ class LogsFragment : Fragment() {
             LogsScreen.ALL_IN_MEM_LOGS -> getLogFrom(logger)
             LogsScreen.ALL_IN_DB_LOGS -> getLogFrom(dbLogger)
         }
+
+        analyticsTrack()
     }
 
     private fun getLogFrom(logger: LoggerDataSource) {
@@ -77,6 +82,11 @@ class LogsFragment : Fragment() {
                     dateFormatter
                 )
         }
+    }
+
+    private fun analyticsTrack() {
+        android.util.Log.d("AnalyticsHilt", "Notice the AnalyticsServiceImpl instances, they are created/destroyed per fragment lifecycle")
+        analyticsService.track(this::class.simpleName.toString())
     }
 }
 

@@ -27,4 +27,5 @@
     <string name="content_authority">com.example.android.hilt.provider</string>
     <string name="in_memory">In Memory</string>
     <string name="in_database">In Database</string>
+    <string name="analytics_notification">Localized analytics tracked, check Logcat AnalyticsHilt for more details</string>
 </resources>
