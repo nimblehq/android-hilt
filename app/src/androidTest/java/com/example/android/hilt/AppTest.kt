@@ -16,13 +16,12 @@
 
 package com.example.android.hilt
 
+import android.content.pm.ActivityInfo
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.android.hilt.ui.MainActivity
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -40,7 +39,7 @@ class AppTest {
     var hiltRule = HiltAndroidRule(this)
 
     @Test
-    fun happyPath() {
+    fun validateTheHappyPath() {
         ActivityScenario.launch(MainActivity::class.java)
 
         // Check Buttons fragment screen is displayed
@@ -53,7 +52,28 @@ class AppTest {
         onView(withId(R.id.btAllLogsInMem)).perform(click())
 
         // Check Logs fragment screen is displayed
-        onView(withText(containsString("Interaction with 'Button 1'")))
+        onView(withText(containsString("Tapped on 'Button 1'")))
+            .check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun validateRotationScenario() {
+        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
+
+        // Tap on Button 3
+        onView(withId(R.id.btMemory3)).perform(click())
+
+        // Navigate to Logs screen
+        onView(withId(R.id.btAllLogsInMem)).perform(click())
+
+        // Perform rotate and reverse
+        activityScenario.onActivity { activity ->
+            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        }
+
+        // Check Logs fragment screen is STILL displaying the correct content
+        onView(withText(containsString("Tapped on 'Button 3'")))
             .check(matches(isDisplayed()))
     }
 }
