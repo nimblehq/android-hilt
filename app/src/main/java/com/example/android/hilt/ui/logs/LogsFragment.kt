@@ -16,11 +16,10 @@
 
 package com.example.android.hilt.ui.logs
 
+import analytics.AnalyticsService
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -28,9 +27,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.hilt.R
-import com.example.android.hilt.analytics.AnalyticsService
-import com.example.android.hilt.datasource.model.Log
 import com.example.android.hilt.datasource.logs.LoggerDataSource
+import com.example.android.hilt.datasource.model.Log
 import com.example.android.hilt.di.qualifier.DatabaseLogger
 import com.example.android.hilt.di.qualifier.InMemoryLogger
 import com.example.android.hilt.navigator.LogsScreen

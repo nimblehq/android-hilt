@@ -1,7 +1,7 @@
 package com.example.android.hilt.di
 
-import com.example.android.hilt.analytics.AnalyticsService
-import com.example.android.hilt.analytics.AnalyticsServiceImpl
+import analytics.AnalyticsService
+import analytics.AnalyticsServiceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

@@ -1,4 +1,4 @@
-package com.example.android.hilt.analytics
+package analytics
 
 import android.content.Context
 import android.util.Log
@@ -19,7 +19,7 @@ class AnalyticsServiceImpl @Inject constructor(
     override fun track(name: String) {
         Toast.makeText(
             context,
-            context.getString(R.string.analytics_notification),
+            context.getString(R.string.analytics_notification, name),
             Toast.LENGTH_SHORT
         ).show()
         Log.d("AnalyticsHilt", "Screen name: $name, service instance: $this")
