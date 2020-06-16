@@ -16,11 +16,11 @@
 
 package com.example.android.hilt.ui
 
+import analytics.AnalyticsService
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import com.example.android.hilt.R
-import com.example.android.hilt.analytics.AnalyticsService
 import com.example.android.hilt.datasource.logs.LoggerDataSource
 import com.example.android.hilt.di.qualifier.DatabaseLogger
 import com.example.android.hilt.di.qualifier.InMemoryLogger

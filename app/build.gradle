@@ -47,6 +47,10 @@ android {
     }
 
     kotlinOptions { jvmTarget = "1.8" }
+
+    testOptions {
+        unitTests.includeAndroidResources true
+    }
 }
 
 dependencies {
@@ -70,8 +74,6 @@ dependencies {
             "androidx.navigation:navigation-fragment-ktx:$nav_version",
             "androidx.navigation:navigation-ui-ktx:$nav_version"
     )
-
-    // Room
     kapt(
             "androidx.lifecycle:lifecycle-compiler:$lifecycle_version",
             'androidx.room:room-compiler:2.2.5',
@@ -80,7 +82,17 @@ dependencies {
 
     )
 
+    // Robolectric
+    testImplementation "org.robolectric:robolectric:4.3.1"
+    testImplementation "androidx.test:core-ktx:1.2.0"
+    testImplementation "androidx.test.ext:junit-ktx:1.1.1"
+    testImplementation "androidx.test:rules:1.2.0"
     testImplementation "androidx.arch.core:core-testing:$arch_version"
+    testImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    testImplementation "org.mockito:mockito-core:1.10.19"
+    testImplementation "org.amshove.kluent:kluent-android:1.61"
+    testImplementation "junit:junit:4.13"
+    kaptTest "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     // Testing dependencies
     androidTestImplementation "junit:junit:4.13"
@@ -88,9 +100,6 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit-ktx:1.1.1"
     androidTestImplementation "androidx.test:rules:1.2.0"
     androidTestImplementation "androidx.test.espresso:espresso-core:3.2.0"
-
-
-    // Hilt testing dependencies
     androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
 }
