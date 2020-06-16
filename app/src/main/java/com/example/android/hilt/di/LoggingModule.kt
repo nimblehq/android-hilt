@@ -16,14 +16,14 @@
 
 package com.example.android.hilt.di
 
-import com.example.android.hilt.data.*
+import com.example.android.hilt.datasource.logs.*
 import com.example.android.hilt.di.qualifier.DatabaseLogger
 import com.example.android.hilt.di.qualifier.InMemoryLogger
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.components.*
+import dagger.hilt.android.scopes.ActivityRetainedScoped
 import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Singleton
 
@@ -37,12 +37,12 @@ abstract class LoggingDatabaseModule {
     abstract fun bindDatabaseLogger(impl: LoggerLocalDataSource): LoggerDataSource
 }
 
-@InstallIn(ActivityComponent::class)
+@InstallIn(ActivityRetainedComponent::class)
 @Module
 abstract class LoggingInMemoryModule {
 
     @InMemoryLogger
-    @ActivityScoped
+    @ActivityRetainedScoped
     @Binds
     abstract fun bindInMemoryLogger(impl: LoggerInMemoryDataSource): LoggerDataSource
 }

@@ -14,14 +14,17 @@
  * limitations under the License.
  */
 
-package com.example.android.hilt.data
+package com.example.android.hilt.datasource
 
-// Common interface for Logger data sources.
-interface LoggerDataSource {
+import androidx.room.Database
+import androidx.room.RoomDatabase
+import com.example.android.hilt.datasource.logs.LogDao
+import com.example.android.hilt.datasource.model.Log
 
-    fun addLog(msg: String)
-
-    fun getAllLogs(callback: (List<Log>) -> Unit)
-
-    fun removeLogs()
+/**
+ * SQLite Database for storing the logs.
+ */
+@Database(entities = [Log::class], version = 1, exportSchema = false)
+abstract class AppDatabase : RoomDatabase() {
+    abstract fun logDao(): LogDao
 }

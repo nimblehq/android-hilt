@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package com.example.android.hilt.data
+package com.example.android.hilt.datasource.logs
 
 import android.database.Cursor
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.example.android.hilt.datasource.model.Log
 
 /**
  * Data access object to query the database.

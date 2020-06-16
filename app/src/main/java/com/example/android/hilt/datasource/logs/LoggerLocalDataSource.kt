@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 
-package com.example.android.hilt.data
+package com.example.android.hilt.datasource.logs
 
 import android.os.Handler
-import android.os.Looper
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
+import com.example.android.hilt.datasource.model.Log
+import java.util.concurrent.*
 import javax.inject.Inject
 
 /**

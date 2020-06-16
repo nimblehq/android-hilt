@@ -14,24 +14,16 @@
  * limitations under the License.
  */
 
-package com.example.android.hilt.data
+package com.example.android.hilt.datasource.logs
 
-import java.util.LinkedList
-import javax.inject.Inject
+import com.example.android.hilt.datasource.model.Log
 
-class LoggerInMemoryDataSource @Inject constructor() : LoggerDataSource {
+// Common interface for Logger data sources.
+interface LoggerDataSource {
 
-    private val logs = LinkedList<Log>()
+    fun addLog(msg: String)
 
-    override fun addLog(msg: String) {
-        logs.addFirst(Log(msg, System.currentTimeMillis()))
-    }
+    fun getAllLogs(callback: (List<Log>) -> Unit)
 
-    override fun getAllLogs(callback: (List<Log>) -> Unit) {
-        callback(logs)
-    }
-
-    override fun removeLogs() {
-        logs.clear()
-    }
+    fun removeLogs()
 }
