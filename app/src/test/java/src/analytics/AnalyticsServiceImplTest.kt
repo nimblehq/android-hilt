@@ -19,6 +19,7 @@ import org.robolectric.shadows.ShadowToast
 class AnalyticsServiceImplTest {
 
     @get:Rule var hiltRule = HiltAndroidRule(this)
+
     private val appContext = ApplicationProvider.getApplicationContext<Context>()
 
     @Test

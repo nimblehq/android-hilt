@@ -21,5 +21,4 @@ class LogsViewModelImpl @ViewModelInject constructor(
             _logs.postValue(it)
         }
     }
-
 }
