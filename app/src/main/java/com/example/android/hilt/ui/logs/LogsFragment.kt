@@ -30,7 +30,6 @@ import com.example.android.hilt.R
 import com.example.android.hilt.datasource.logs.LoggerDataSource
 import com.example.android.hilt.datasource.model.Log
 import com.example.android.hilt.di.qualifier.DatabaseLogger
-import com.example.android.hilt.di.qualifier.InMemoryLogger
 import com.example.android.hilt.navigator.LogsScreen
 import com.example.android.hilt.util.DateFormatter
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,9 +41,6 @@ import javax.inject.Inject
  */
 @AndroidEntryPoint
 class LogsFragment : Fragment() {
-
-    @InMemoryLogger
-    @Inject lateinit var logger: LoggerDataSource
 
     @DatabaseLogger
     @Inject lateinit var dbLogger: LoggerDataSource
