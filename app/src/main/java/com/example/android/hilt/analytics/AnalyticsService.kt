@@ -1,4 +1,4 @@
-package analytics
+package com.example.android.hilt.analytics
 
 import android.content.Context
 import android.util.Log

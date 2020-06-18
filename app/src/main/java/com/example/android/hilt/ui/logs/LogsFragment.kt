@@ -16,7 +16,6 @@
 
 package com.example.android.hilt.ui.logs
 
-import analytics.AnalyticsService
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
@@ -27,6 +26,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.hilt.R
+import com.example.android.hilt.analytics.AnalyticsService
 import com.example.android.hilt.datasource.logs.LoggerDataSource
 import com.example.android.hilt.datasource.model.Log
 import com.example.android.hilt.di.qualifier.DatabaseLogger
