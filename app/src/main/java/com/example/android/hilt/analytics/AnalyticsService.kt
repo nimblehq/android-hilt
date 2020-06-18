@@ -15,7 +15,6 @@ class AnalyticsServiceImpl @Inject constructor(
     @ActivityContext val context: Context
 ) : AnalyticsService {
 
-
     override fun track(name: String) {
         Toast.makeText(
             context,
