@@ -1,12 +1,12 @@
-package src.analytics
+package com.example.android.hilt.analytics
 
-import analytics.AnalyticsServiceImpl
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.android.hilt.R
 import dagger.hilt.android.testing.*
 import org.amshove.kluent.shouldBe
+import org.amshove.kluent.shouldNotBe
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -29,5 +29,11 @@ class AnalyticsServiceImplTest {
 
         val expectedValue = appContext.resources.getString(R.string.analytics_notification, "Hello")
         ShadowToast.showedToast(expectedValue) shouldBe true
+    }
+
+    @Test
+    fun `Validate getter`() {
+        val analyticsServiceImpl = AnalyticsServiceImpl(appContext)
+        analyticsServiceImpl.context shouldNotBe null
     }
 }

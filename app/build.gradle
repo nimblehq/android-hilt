@@ -41,6 +41,12 @@ android {
         }
     }
 
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
+    }
+
     compileOptions {
         sourceCompatibility 1.8
         targetCompatibility 1.8
@@ -49,12 +55,23 @@ android {
     kotlinOptions { jvmTarget = "1.8" }
 
     testOptions {
-        unitTests.includeAndroidResources true
+        unitTests {
+            all {
+                jvmArgs '-noverify', '-ea'
+                jacoco {
+                    includeNoLocationClasses = true
+                }
+            }
+            includeAndroidResources = true
+        }
     }
+
     hilt {
         enableTransformForLocalTests = true
     }
+
 }
+
 
 dependencies {
     implementation(

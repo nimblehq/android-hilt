@@ -16,12 +16,12 @@
 
 package com.example.android.hilt.ui.buttons
 
-import analytics.AnalyticsService
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.android.hilt.R
+import com.example.android.hilt.analytics.AnalyticsService
 import com.example.android.hilt.navigator.AppNavigator
 import com.example.android.hilt.navigator.LogsScreen
 import dagger.hilt.android.AndroidEntryPoint
