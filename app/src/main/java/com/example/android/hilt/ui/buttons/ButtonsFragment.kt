@@ -14,16 +14,14 @@
  * limitations under the License.
  */
 
-package com.example.android.hilt.ui
+package com.example.android.hilt.ui.buttons
 
 import analytics.AnalyticsService
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.android.hilt.R
-import com.example.android.hilt.datasource.logs.LoggerDataSource
-import com.example.android.hilt.di.qualifier.DatabaseLogger
-import com.example.android.hilt.di.qualifier.InMemoryLogger
 import com.example.android.hilt.navigator.AppNavigator
 import com.example.android.hilt.navigator.LogsScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,15 +34,11 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ButtonsFragment : Fragment() {
 
-    @InMemoryLogger
-    @Inject lateinit var inMemoryLogger: LoggerDataSource
-
-    @DatabaseLogger
-    @Inject lateinit var databaseLogger: LoggerDataSource
-
     @Inject lateinit var navigator: AppNavigator
 
     @Inject lateinit var analyticsService: AnalyticsService
+
+    private val viewModel: ButtonsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,17 +49,17 @@ class ButtonsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        btMemory1.setOnClickListener { inMemoryLogger.addLog("Tapped on 'Button 1'") }
-        btMemory2.setOnClickListener { inMemoryLogger.addLog("Tapped on 'Button 2'")}
-        btMemory3.setOnClickListener { inMemoryLogger.addLog("Tapped on 'Button 3'") }
+        btMemory1.setOnClickListener { viewModel.addInMemLog("Tapped on 'Button 1'") }
+        btMemory2.setOnClickListener { viewModel.addInMemLog("Tapped on 'Button 2'")}
+        btMemory3.setOnClickListener { viewModel.addInMemLog("Tapped on 'Button 3'") }
         btAllLogsInMem.setOnClickListener { navigator.navigateToAllLogs(LogsScreen.ALL_IN_MEM_LOGS) }
-        btClearMemLogs.setOnClickListener { inMemoryLogger.removeLogs() }
+        btClearMemLogs.setOnClickListener { viewModel.removeInMemberLogs() }
 
-        btDb1.setOnClickListener { databaseLogger.addLog("Tapped on 'Button 1'") }
-        btDb2.setOnClickListener { databaseLogger.addLog("Tapped on 'Button 2'")}
-        btDb3.setOnClickListener { databaseLogger.addLog("Tapped on 'Button 3'") }
+        btDb1.setOnClickListener { viewModel.addDbLog("Tapped on 'Button 1'") }
+        btDb2.setOnClickListener { viewModel.addDbLog("Tapped on 'Button 2'")}
+        btDb3.setOnClickListener { viewModel.addDbLog("Tapped on 'Button 3'") }
         btAllLogsInDb.setOnClickListener { navigator.navigateToAllLogs(LogsScreen.ALL_IN_DB_LOGS) }
-        btClearDbLogs.setOnClickListener { databaseLogger.removeLogs() }
+        btClearDbLogs.setOnClickListener { viewModel.removeDbLogs() }
 
         analyticsTrack()
     }

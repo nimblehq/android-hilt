@@ -19,7 +19,7 @@ package com.example.android.hilt.navigator
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
 import com.example.android.hilt.R
-import com.example.android.hilt.ui.ButtonsFragmentDirections.Companion.actionButtonsFragmentToLogsFragment
+import com.example.android.hilt.ui.buttons.ButtonsFragmentDirections.Companion.actionButtonsFragmentToLogsFragment
 import javax.inject.Inject
 
 /**
