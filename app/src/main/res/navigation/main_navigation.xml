@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/buttonsFragment"
-        android:name="com.example.android.hilt.ui.ButtonsFragment"
+        android:name="com.example.android.hilt.ui.buttons.ButtonsFragment"
         android:label="ButtonsFragment">
         <action
             android:id="@+id/action_buttonsFragment_to_logsFragment"
